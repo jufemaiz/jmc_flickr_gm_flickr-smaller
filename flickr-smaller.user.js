@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          Flickr Smallerifier
 // @namespace     http://github.com/jufemaiz/jmc_flickr_gm_flickr-smaller
-// @description   Toggle the appearance of the map on the new flickr page.
+// @description   Smallifiers the images on the flickr beta photopage back to 500px max and alters notes accordingly
 // @include       http://*flickr.com/photos/*
 //
 // ==/UserScript==
