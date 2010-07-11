@@ -5,7 +5,7 @@
 // @include       http://*flickr.com/photos/*
 //
 // ==/UserScript==
-//
+// NOTE: THIS SCRIPT WILL NOT ALLOW YOU TO CORRECTLY POSITION NEW OR EDIT EXISTING NOTES
 
 var $;
 
@@ -35,6 +35,32 @@ var $;
 	// Load 'em up!
 	function letsJQuery(){
 		// Photo element
-		var image = $('#photo .photo-div img')[0];
-		image.attr('src',image.attr('src').replace(/_z\./, ""));
+		var image = $($('#photo .photo-div img')[0]);
+		image.attr('src',image.attr('src').replace(/_z\./, "."));
+		
+		// Resize stuff based on 640 -> 500
+		var ratio = 500/640;
+		image.attr('height',ratio * image.attr('height'));
+		image.attr('width',ratio * image.attr('width'));
+		
+		// Reposition notes
+		var notes = $('#notes li');
+		notes.each(function(){
+			var li = $(this);
+			li.css({
+				'left' : ratio * li.css('left').replace(/px/, "") + 'px',
+				'top' : ratio * li.css('top').replace(/px/, "") + 'px',
+				'height' : ratio * li.css('height').replace(/px/, "") + 'px',
+				'width' : ratio * li.css('width').replace(/px/, "") + 'px'
+			});
+		});
+		
+		// Reposition photo proxy dragger
+		var photoDragProxy = $('#photo-drag-proxy');
+		alert(photoDragProxy.css('height'));
+		photoDragProxy.css({
+			'height' : ratio * photoDragProxy.css('height').replace(/px/, "") + 'px',
+			'width' : ratio * photoDragProxy.css('width').replace(/px/, "") + 'px'
+		});
+		
 	}
