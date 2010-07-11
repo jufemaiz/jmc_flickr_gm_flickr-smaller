@@ -57,7 +57,6 @@ var $;
 		
 		// Reposition photo proxy dragger
 		var photoDragProxy = $('#photo-drag-proxy');
-		alert(photoDragProxy.css('height'));
 		photoDragProxy.css({
 			'height' : ratio * photoDragProxy.css('height').replace(/px/, "") + 'px',
 			'width' : ratio * photoDragProxy.css('width').replace(/px/, "") + 'px'
